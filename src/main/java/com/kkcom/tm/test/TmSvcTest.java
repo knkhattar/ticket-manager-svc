@@ -14,6 +14,6 @@ public class TmSvcTest {
 
 		AuthService authService = (AuthService) context.getBean("authService");
 		
-		System.out.println("auth status ::"+authService.authenticate("testuser", "testpass").isAuthenticated());
+		System.out.println("auth status ::"+authService.authenticate("test11", "pass1").isAuthenticated());
 	}
 }
