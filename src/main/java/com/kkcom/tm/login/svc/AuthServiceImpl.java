@@ -1,29 +1,29 @@
 package com.kkcom.tm.login.svc;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.util.List;
 
-import javax.sql.DataSource;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Service;
 
 import com.kkcom.tm.login.model.AuthStatus;
+import com.kkcom.tm.login.model.Users;
 
 @Service
 public class AuthServiceImpl implements AuthService {
 
-	DataSource dataSource;
+	
+	private SessionFactory sessionFactory;
 
-	public DataSource getDataSource() {
-		return dataSource;
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
 	}
 
-	public void setDataSource(DataSource dataSource) {
-		this.dataSource = dataSource;
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
 	}
-
+	
 	public AuthStatus authenticate(String username, String password) {
 
 		AuthStatus authStatus = new AuthStatus();
@@ -34,35 +34,27 @@ public class AuthServiceImpl implements AuthService {
 
 	private boolean checkDbForAuth(String userName, String password) {
 		boolean isAuthenticated = false;
-		Connection conn = null;
-		ResultSet rs = null;
-		Statement stmt = null;
-
+		Session session = null;
 		try {
-
-			if (dataSource == null) {
+			session = getSessionFactory().openSession();
+			if (session == null) {
 				System.out.println("dataSource is null ::");
 			}
-
-			conn = dataSource.getConnection();
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery("select * from users where name='"
-					+ userName + "' and password='" + password + "'");
-
-			if (rs.next()) {
+			
+			String hql = "from Users where name = :userName and password = :password";
+			Query query = session.createQuery(hql);
+			query.setString("userName", userName);
+			query.setString("password", password);
+			List result = query.list();
+			if(result.size() >= 1)
+			{
 				isAuthenticated = true;
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				rs.close();
-				stmt.close();
-				conn.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
 		}
+		
 		return isAuthenticated;
 	}
 
