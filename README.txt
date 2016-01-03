@@ -22,4 +22,5 @@
 .spring-oauth-poc
 .web-socket-poc
 .spring-integration-poc
+.CI Server
   
