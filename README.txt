@@ -1,7 +1,23 @@
+-- ticket-manager-svc - 
+
 //TODO
-/1. Spring core
-/2. Hibernate
-3. JPA
-4. Angular JS
-/5. Log4j
-6. AOP
+/ Spring core
+/ Hibernate
+/Log4j
+ JPA
+ AOP
+------------------------------------------------
+
+-- ticket-manager-mvc
+ Angular JS
+ Bean scopes
+ Basic Security
+
+ -- Other
+ 
+ 1. spring-hibernate - to test all hibernate features
+  
+ 2. Spring-Security details
+ 3. Spring SOAP
+ 4. Spring OAuth
+ 
