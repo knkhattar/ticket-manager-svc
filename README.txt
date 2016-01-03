@@ -15,9 +15,11 @@
 
  -- Other
  
- 1. spring-hibernate - to test all hibernate features
+ .spring-hibernate - to test all hibernate features
   
- 2. Spring-Security details
- 3. Spring SOAP
- 4. Spring OAuth
- 
+.spring-security-poc - to test few security configsdetails
+.spring-soap-ws
+.spring-oauth-poc
+.web-socket-poc
+.spring-integration-poc
+  
