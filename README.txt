@@ -12,6 +12,7 @@
  Angular JS
  Bean scopes
  Basic Security
+ JWT tokens
 
  -- Other
  
@@ -23,4 +24,10 @@
 .web-socket-poc
 .spring-integration-poc
 .CI Server
+
+. Creating a http server and running a web service on it
+. Socket program
+. Reading cookies
+. Transiet volatile serialisation test
+. 
   
