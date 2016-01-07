@@ -1,0 +1,29 @@
+1.	WITHOUT SERVER
+
+	.stock-exchange :  Hibernate features – without spring
+	.ticket-manager-svc
+		.Spring-JPA-Hibernate
+		.AOP
+		.Log4j
+	.java-core-tests
+		.Design Patterns without Sever with UML
+		.Serialisation test
+		.Socket program and http server
+		.HTTPS Implementation
+		.Public and Private key cryptography
+	.JMS-ActiveMQ
+	.Spring-integration-POC
+	.Employee - SQL Tests
+
+2.	WITH SERVER
+	.Spring Web Service – SOAP based
+	.Ticket-manager
+		.Spring bean scopes
+		.Spring Web Service – RESTfull
+		.JWT tokens
+	.Web-socket-poc
+	.Container authentication – with different realms
+	.Spring-security-POC
+	.Read cookies, CI Server
+	.Spring-oAuth-poc
+	
