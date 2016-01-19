@@ -4,6 +4,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class AuthStatus {
+	@Override
+	public String toString() {
+		return "AuthStatus [authenticated=" + authenticated + ", errMsg="
+				+ errMsg + ", opStatus=" + opStatus + "]";
+	}
+
 	boolean authenticated;
 
 	public boolean isAuthenticated() {

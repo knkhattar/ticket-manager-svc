@@ -9,5 +9,6 @@
     <import resource="db-derby-config.xml"/>
     <import resource="orm-beans.xml"/>
     <import resource="login-module-beans.xml"/>
+    <import resource="spring-aop-config.xml"/>
 
 </beans>
