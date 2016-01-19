@@ -1,4 +1,4 @@
-1.	WITHOUT SERVER
+1.	WITHOUT SERVER - maven-quick-start
 
 	.stock-exchange :  Hibernate features – without spring
 	.ticket-manager-svc
@@ -11,6 +11,8 @@
 		.Socket program and http server
 		.HTTPS Implementation
 		.Public and Private key cryptography
+		.Collections - Sorting
+		
 	.JMS-ActiveMQ
 	.Spring-integration-POC
 	.Employee - SQL Tests

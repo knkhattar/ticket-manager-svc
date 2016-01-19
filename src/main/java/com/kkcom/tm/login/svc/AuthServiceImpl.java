@@ -2,10 +2,12 @@ package com.kkcom.tm.login.svc;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
+
 import org.apache.log4j.Logger;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Service;
 
 import com.kkcom.tm.login.model.AuthStatus;
@@ -15,16 +17,18 @@ import com.kkcom.tm.login.model.Users;
 public class AuthServiceImpl implements AuthService {
 
 	static Logger logger = Logger.getLogger(AuthServiceImpl.class);
-
-	private SessionFactory sessionFactory;
-
-	public SessionFactory getSessionFactory() {
-		return sessionFactory;
+	
+	private static EntityManagerFactory entityManagerFactory;
+	
+	public static EntityManagerFactory getEntityManagerFactory() {
+		return entityManagerFactory;
 	}
 
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
+	public static void setEntityManagerFactory(EntityManagerFactory entityManagerFactory) {
+		AuthServiceImpl.entityManagerFactory = entityManagerFactory;
 	}
+	
+
 
 	public AuthStatus authenticate(String username, String password) {
 		logger.info("Inside authenticate method");
@@ -39,22 +43,25 @@ public class AuthServiceImpl implements AuthService {
 	@SuppressWarnings("unchecked")
 	private boolean checkDbForAuth(String userName, String password) {
 		boolean isAuthenticated = false;
-		Session session = null;
+		EntityManager manager = entityManagerFactory.createEntityManager();
+		EntityTransaction transaction = null;
+		List<Users> users = null;
 		try {
-			session = getSessionFactory().openSession();
-			if (session == null) {
-				System.out.println("dataSource is null ::");
-			}
+			transaction = manager.getTransaction();
+			transaction.begin();
+
 
 			String hql = "from Users where name = :userName and password = :password";
-			Query query = session.createQuery(hql);
-			query.setString("userName", userName);
-			query.setString("password", password);
-			List<Users> result = query.list();
-			if (result.size() >= 1) {
+			Query query = manager.createQuery(hql);
+			query.setParameter("userName", userName);
+			query.setParameter("password", password);
+			users = query.getResultList();
+			if (users.size() >= 1) {
 				isAuthenticated = true;
 			}
 
+			transaction.commit();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

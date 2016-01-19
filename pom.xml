@@ -6,18 +6,20 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
-		<spring.version>3.2.3.RELEASE</spring.version>
+		<spring.version>4.2.4.RELEASE</spring.version>
 		<hibernate.version>4.2.1.Final</hibernate.version>
+		<log4j.version>1.2.17</log4j.version>
+		<derby.version>10.10.1.1</derby.version>
 		<jackson.version>1.9.10</jackson.version>
 		<jdk.version>1.7</jdk.version>
 	</properties>
 
 	<dependencies>
-		<!-- Hibernate ORM -->
+		<!-- Hibernate ORM 4 dependency-->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
-			<version>${hibernate.version}</version>
+			<version>4.3.10.Final</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -25,14 +27,15 @@
 			<version>4.8.2</version>
 			<scope>test</scope>
 		</dependency>
-
+		
+		<!-- Derby 10 dependency-->
 		<dependency>
 			<groupId>org.apache.derby</groupId>
 			<artifactId>derby</artifactId>
-			<version>10.10.1.1</version>
+			<version>${derby.version}</version>
 		</dependency>
 
-		<!-- Spring 3 dependencies -->
+		<!-- Spring 4 dependencies -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
@@ -62,11 +65,47 @@
 			<artifactId>spring-test</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-
+		
+		<!-- log4j dependency-->
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
+			<version>${log4j.version}</version>
+		</dependency>
+		
+		<!-- Aspectjrt Dependency -->
+		<dependency>
+			<groupId>aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.5.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.8.7</version>
+		</dependency>
+
+		<dependency>
+			<groupId>aopalliance</groupId>
+			<artifactId>aopalliance</artifactId>
+			<version>1.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>3.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>asm</groupId>
+			<artifactId>asm</artifactId>
+			<version>3.3.1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>3.18.2-GA</version>
 		</dependency>
 
 	</dependencies>
