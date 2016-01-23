@@ -27,5 +27,5 @@
 	.Container authentication – with different realms
 	.Spring-security-POC
 	.Read cookies, CI Server
-	.Spring-oAuth-poc
+	.Spring-oAuth-POC
 	
